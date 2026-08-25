@@ -1,0 +1,586 @@
+Tue 25 Aug 2026 12:03:15 INFO  ['run.py', '--dataset=ta-feng', '--USER_ID_FIELD=customer_id', '--ITEM_ID_FIELD=product_id', '--TIME_FIELD=transaction_date', '--load_col={"inter": ["customer_id", "product_id", "transaction_date"]}', '--hidden_dropout_prob=0.6', '--calendar_use_hour=0', '--use_calendar_periodicity=1', '--use_user_time_interaction=1', '--use_interval_recurrence=0', '--use_frequency_rhythm=0', '--use_item_time_interaction=0', '--calendar_use_path_a=1', '--calendar_use_path_b=1', '--time_gate_shallow=1', '--time_fusion_mode=concat', '--time_anchor_mode=target', '--calendar_use_day_of_week=1', '--calendar_use_weekend=1', '--time_gate_alpha=1.0', '--calendar_use_day_of_month=1', '--calendar_use_month=1', '--time_gate_dropout=0.1', '--seed=2024', '--gpu_id=3']
+Tue 25 Aug 2026 12:03:15 INFO  
+General Hyper Parameters:
+gpu_id = 3
+use_gpu = True
+seed = 2024
+state = INFO
+reproducibility = True
+data_path = dataset/ta-feng
+checkpoint_dir = saved
+show_progress = True
+save_dataset = False
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = True
+metrics = ['Hit', 'NDCG', 'MRR', 'Precision']
+topk = [5, 10, 20]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = customer_id
+ITEM_ID_FIELD = product_id
+RATING_FIELD = rating
+TIME_FIELD = transaction_date
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['customer_id', 'product_id', 'transaction_date']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = [5,inf)
+item_inter_num_interval = [5,inf)
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = None
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+numerical_features = []
+discretization = None
+kg_reverse_r = False
+entity_kg_num_interval = [0,inf)
+relation_kg_num_interval = [0,inf)
+MODEL_TYPE = ModelType.SEQUENTIAL
+n_layers = 2
+hidden_size = 64
+inner_size = 256
+hidden_dropout_prob = 0.6
+hidden_act = gelu
+layer_norm_eps = 1e-12
+initializer_range = 0.02
+loss_type = CE
+n_facet_all = 2
+n_facet = 1
+n_facet_context = 1
+n_facet_emb = 0
+n_facet_hidden = 1
+n_facet_window = 0
+n_facet_MLP = 0
+weight_mode = 
+context_norm = 1
+partition_merging_mode = replace
+use_proj_bias = 1
+post_remove_context = 0
+svd_n_iter = 3
+embedding_init_method = scipy_svd
+encoder_type = mamba
+d_state = 32
+d_conv = 4
+expand = 2
+tau = 0.1
+omega1 = 0
+bata = 0
+use_interval_recurrence = 0
+use_calendar_periodicity = 1
+use_frequency_rhythm = 0
+time_anchor_mode = target
+interval_num_bins = 16
+interval_log_base = 2.0
+interval_max_days = 3650
+calendar_use_hour = 0
+calendar_use_day_of_week = 1
+calendar_use_weekend = 1
+calendar_use_day_of_month = 1
+calendar_use_month = 1
+frequency_window_days = 64
+interval_use_path_a = 1
+interval_use_path_b = 0
+calendar_use_path_a = 1
+calendar_use_path_b = 1
+frequency_use_path_a = 0
+frequency_use_path_b = 1
+use_user_time_interaction = 1
+use_item_time_interaction = 0
+time_fusion_mode = concat
+time_gate_shallow = 1
+time_gate_alpha = 1.0
+time_gate_dropout = 0.1
+time_unit_seconds = 86400.0
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cuda
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+Tue 25 Aug 2026 12:03:20 INFO  ta-feng
+The number of users: 26162
+Average actions of users: 29.990023317151486
+The number of items: 15642
+Average actions of items: 50.1610510836903
+The number of inters: 784569
+The sparsity of the dataset: 99.80827977881874%
+Remain Fields: ['transaction_date', 'customer_id', 'product_id']
+Tue 25 Aug 2026 12:03:36 INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'none', 'sample_num': 'none', 'alpha': 'none', 'dynamic': False, 'candidate_num': 0}]
+Tue 25 Aug 2026 12:03:36 INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'LS': 'valid_and_test'}, 'order': 'TO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+Tue 25 Aug 2026 12:03:39 INFO  SCFF(
+  (MLP_linear): Linear(in_features=64, out_features=0, bias=True)
+  (project_arr): ModuleList(
+    (0-1): 2 x Linear(in_features=64, out_features=64, bias=True)
+  )
+  (project_emb): Linear(in_features=64, out_features=64, bias=True)
+  (item_embedding): Embedding(15642, 64, padding_idx=0)
+  (position_embedding): Embedding(50, 64)
+  (mamba_layers): ModuleList(
+    (0-1): 2 x MambaLayer(
+      (mamba): Mamba(
+        (in_proj): Linear(in_features=64, out_features=256, bias=False)
+        (conv1d): Conv1d(128, 128, kernel_size=(4,), stride=(1,), padding=(3,), groups=128)
+        (act): SiLU()
+        (x_proj): Linear(in_features=128, out_features=68, bias=False)
+        (dt_proj): Linear(in_features=4, out_features=128, bias=True)
+        (out_proj): Linear(in_features=128, out_features=64, bias=False)
+      )
+      (cpu_fallback): Linear(in_features=64, out_features=64, bias=True)
+      (dropout): Dropout(p=0.6, inplace=False)
+      (LayerNorm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+      (ffn): FeedForward(
+        (w_1): Linear(in_features=64, out_features=256, bias=True)
+        (w_2): Linear(in_features=256, out_features=64, bias=True)
+        (activation): GELU(approximate='none')
+        (dropout): Dropout(p=0.6, inplace=False)
+        (LayerNorm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+      )
+    )
+  )
+  (LayerNorm): LayerNorm((64,), eps=1e-12, elementwise_affine=True)
+  (dropout): Dropout(p=0.6, inplace=False)
+  (calendar_periodicity_gate): CalendarPeriodicityGate(
+    (anchor_embeddings): ModuleDict(
+      (day_of_week): Embedding(7, 64)
+      (weekend): Embedding(2, 64)
+      (day_of_month): Embedding(30, 64)
+      (month): Embedding(12, 64)
+    )
+    (embeddings): ModuleDict(
+      (day_of_week): Embedding(7, 64)
+      (weekend): Embedding(2, 64)
+      (day_of_month): Embedding(30, 64)
+      (month): Embedding(12, 64)
+    )
+    (match_proj): Linear(in_features=4, out_features=64, bias=True)
+    (proj): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): GELU(approximate='none')
+      (2): Dropout(p=0.1, inplace=False)
+      (3): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (anchor_proj): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): GELU(approximate='none')
+      (2): Dropout(p=0.1, inplace=False)
+    )
+  )
+  (user_time_gate): UserTimeGate(
+    (gate): Sequential(
+      (0): Linear(in_features=192, out_features=64, bias=True)
+      (1): GELU(approximate='none')
+      (2): Dropout(p=0.1, inplace=False)
+      (3): Linear(in_features=64, out_features=64, bias=True)
+    )
+  )
+  (loss_fct): NLLLoss()
+)
+Trainable parameters: 1201218
+Tue 25 Aug 2026 12:03:40 INFO  FLOPs: 3568128.0
+Tue 25 Aug 2026 12:04:33 INFO  epoch 0 training [time: 53.13s, train loss: 2954.4873]
+Tue 25 Aug 2026 12:04:33 INFO  epoch 0 evaluating [time: 0.56s, valid_score: 0.057200]
+Tue 25 Aug 2026 12:04:33 INFO  valid result: 
+hit@5 : 0.0716    hit@10 : 0.1034    hit@20 : 0.1402    ndcg@5 : 0.0469    ndcg@10 : 0.0572    ndcg@20 : 0.0665    mrr@5 : 0.0388    mrr@10 : 0.043    mrr@20 : 0.0456    precision@5 : 0.0143    precision@10 : 0.0103    precision@20 : 0.007
+Tue 25 Aug 2026 12:04:33 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:05:27 INFO  epoch 1 training [time: 53.68s, train loss: 2828.7752]
+Tue 25 Aug 2026 12:05:27 INFO  epoch 1 evaluating [time: 0.55s, valid_score: 0.063300]
+Tue 25 Aug 2026 12:05:27 INFO  valid result: 
+hit@5 : 0.0774    hit@10 : 0.112    hit@20 : 0.1542    ndcg@5 : 0.0522    ndcg@10 : 0.0633    ndcg@20 : 0.0739    mrr@5 : 0.0439    mrr@10 : 0.0485    mrr@20 : 0.0514    precision@5 : 0.0155    precision@10 : 0.0112    precision@20 : 0.0077
+Tue 25 Aug 2026 12:05:28 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:06:22 INFO  epoch 2 training [time: 54.07s, train loss: 2790.5097]
+Tue 25 Aug 2026 12:06:22 INFO  epoch 2 evaluating [time: 0.51s, valid_score: 0.070000]
+Tue 25 Aug 2026 12:06:22 INFO  valid result: 
+hit@5 : 0.0858    hit@10 : 0.1227    hit@20 : 0.1679    ndcg@5 : 0.0581    ndcg@10 : 0.07    ndcg@20 : 0.0814    mrr@5 : 0.049    mrr@10 : 0.0539    mrr@20 : 0.057    precision@5 : 0.0172    precision@10 : 0.0123    precision@20 : 0.0084
+Tue 25 Aug 2026 12:06:22 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:07:15 INFO  epoch 3 training [time: 53.22s, train loss: 2757.5252]
+Tue 25 Aug 2026 12:07:16 INFO  epoch 3 evaluating [time: 0.51s, valid_score: 0.075500]
+Tue 25 Aug 2026 12:07:16 INFO  valid result: 
+hit@5 : 0.0919    hit@10 : 0.131    hit@20 : 0.1776    ndcg@5 : 0.0629    ndcg@10 : 0.0755    ndcg@20 : 0.0873    mrr@5 : 0.0534    mrr@10 : 0.0585    mrr@20 : 0.0618    precision@5 : 0.0184    precision@10 : 0.0131    precision@20 : 0.0089
+Tue 25 Aug 2026 12:07:16 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:08:10 INFO  epoch 4 training [time: 53.76s, train loss: 2731.4954]
+Tue 25 Aug 2026 12:08:10 INFO  epoch 4 evaluating [time: 0.51s, valid_score: 0.079800]
+Tue 25 Aug 2026 12:08:10 INFO  valid result: 
+hit@5 : 0.0965    hit@10 : 0.1347    hit@20 : 0.1834    ndcg@5 : 0.0674    ndcg@10 : 0.0798    ndcg@20 : 0.092    mrr@5 : 0.0579    mrr@10 : 0.0629    mrr@20 : 0.0663    precision@5 : 0.0193    precision@10 : 0.0135    precision@20 : 0.0092
+Tue 25 Aug 2026 12:08:10 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:09:04 INFO  epoch 5 training [time: 53.65s, train loss: 2710.6603]
+Tue 25 Aug 2026 12:09:05 INFO  epoch 5 evaluating [time: 0.60s, valid_score: 0.083800]
+Tue 25 Aug 2026 12:09:05 INFO  valid result: 
+hit@5 : 0.101    hit@10 : 0.14    hit@20 : 0.188    ndcg@5 : 0.0712    ndcg@10 : 0.0838    ndcg@20 : 0.0959    mrr@5 : 0.0615    mrr@10 : 0.0666    mrr@20 : 0.0699    precision@5 : 0.0202    precision@10 : 0.014    precision@20 : 0.0094
+Tue 25 Aug 2026 12:09:05 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:09:58 INFO  epoch 6 training [time: 53.14s, train loss: 2693.7838]
+Tue 25 Aug 2026 12:09:58 INFO  epoch 6 evaluating [time: 0.52s, valid_score: 0.083500]
+Tue 25 Aug 2026 12:09:58 INFO  valid result: 
+hit@5 : 0.1002    hit@10 : 0.1405    hit@20 : 0.1885    ndcg@5 : 0.0705    ndcg@10 : 0.0835    ndcg@20 : 0.0956    mrr@5 : 0.0607    mrr@10 : 0.066    mrr@20 : 0.0693    precision@5 : 0.02    precision@10 : 0.0141    precision@20 : 0.0094
+Tue 25 Aug 2026 12:10:52 INFO  epoch 7 training [time: 53.55s, train loss: 2679.8875]
+Tue 25 Aug 2026 12:10:52 INFO  epoch 7 evaluating [time: 0.59s, valid_score: 0.085400]
+Tue 25 Aug 2026 12:10:52 INFO  valid result: 
+hit@5 : 0.1031    hit@10 : 0.1432    hit@20 : 0.1917    ndcg@5 : 0.0724    ndcg@10 : 0.0854    ndcg@20 : 0.0976    mrr@5 : 0.0624    mrr@10 : 0.0677    mrr@20 : 0.071    precision@5 : 0.0206    precision@10 : 0.0143    precision@20 : 0.0096
+Tue 25 Aug 2026 12:10:53 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:11:46 INFO  epoch 8 training [time: 53.79s, train loss: 2668.1151]
+Tue 25 Aug 2026 12:11:47 INFO  epoch 8 evaluating [time: 0.60s, valid_score: 0.086600]
+Tue 25 Aug 2026 12:11:47 INFO  valid result: 
+hit@5 : 0.1034    hit@10 : 0.1441    hit@20 : 0.1939    ndcg@5 : 0.0734    ndcg@10 : 0.0866    ndcg@20 : 0.0991    mrr@5 : 0.0635    mrr@10 : 0.069    mrr@20 : 0.0724    precision@5 : 0.0207    precision@10 : 0.0144    precision@20 : 0.0097
+Tue 25 Aug 2026 12:11:47 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:12:42 INFO  epoch 9 training [time: 55.38s, train loss: 2657.3931]
+Tue 25 Aug 2026 12:12:43 INFO  epoch 9 evaluating [time: 0.50s, valid_score: 0.086900]
+Tue 25 Aug 2026 12:12:43 INFO  valid result: 
+hit@5 : 0.1044    hit@10 : 0.145    hit@20 : 0.1924    ndcg@5 : 0.0738    ndcg@10 : 0.0869    ndcg@20 : 0.0989    mrr@5 : 0.0638    mrr@10 : 0.0692    mrr@20 : 0.0724    precision@5 : 0.0209    precision@10 : 0.0145    precision@20 : 0.0096
+Tue 25 Aug 2026 12:12:43 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:13:36 INFO  epoch 10 training [time: 53.53s, train loss: 2647.8206]
+Tue 25 Aug 2026 12:13:37 INFO  epoch 10 evaluating [time: 0.53s, valid_score: 0.086700]
+Tue 25 Aug 2026 12:13:37 INFO  valid result: 
+hit@5 : 0.104    hit@10 : 0.1442    hit@20 : 0.1936    ndcg@5 : 0.0738    ndcg@10 : 0.0867    ndcg@20 : 0.0992    mrr@5 : 0.0638    mrr@10 : 0.0691    mrr@20 : 0.0725    precision@5 : 0.0208    precision@10 : 0.0144    precision@20 : 0.0097
+Tue 25 Aug 2026 12:14:31 INFO  epoch 11 training [time: 53.63s, train loss: 2639.2808]
+Tue 25 Aug 2026 12:14:31 INFO  epoch 11 evaluating [time: 0.50s, valid_score: 0.087700]
+Tue 25 Aug 2026 12:14:31 INFO  valid result: 
+hit@5 : 0.1061    hit@10 : 0.1447    hit@20 : 0.1936    ndcg@5 : 0.0753    ndcg@10 : 0.0877    ndcg@20 : 0.1    mrr@5 : 0.0652    mrr@10 : 0.0702    mrr@20 : 0.0736    precision@5 : 0.0212    precision@10 : 0.0145    precision@20 : 0.0097
+Tue 25 Aug 2026 12:14:31 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:15:26 INFO  epoch 12 training [time: 54.62s, train loss: 2631.8250]
+Tue 25 Aug 2026 12:15:26 INFO  epoch 12 evaluating [time: 0.55s, valid_score: 0.088400]
+Tue 25 Aug 2026 12:15:26 INFO  valid result: 
+hit@5 : 0.1072    hit@10 : 0.1463    hit@20 : 0.1956    ndcg@5 : 0.0758    ndcg@10 : 0.0884    ndcg@20 : 0.1009    mrr@5 : 0.0655    mrr@10 : 0.0707    mrr@20 : 0.0741    precision@5 : 0.0214    precision@10 : 0.0146    precision@20 : 0.0098
+Tue 25 Aug 2026 12:15:26 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:16:21 INFO  epoch 13 training [time: 54.90s, train loss: 2624.5485]
+Tue 25 Aug 2026 12:16:22 INFO  epoch 13 evaluating [time: 0.50s, valid_score: 0.089300]
+Tue 25 Aug 2026 12:16:22 INFO  valid result: 
+hit@5 : 0.1073    hit@10 : 0.1464    hit@20 : 0.1974    ndcg@5 : 0.0767    ndcg@10 : 0.0893    ndcg@20 : 0.1022    mrr@5 : 0.0666    mrr@10 : 0.0718    mrr@20 : 0.0753    precision@5 : 0.0215    precision@10 : 0.0146    precision@20 : 0.0099
+Tue 25 Aug 2026 12:16:22 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:17:17 INFO  epoch 14 training [time: 55.39s, train loss: 2617.6516]
+Tue 25 Aug 2026 12:17:18 INFO  epoch 14 evaluating [time: 0.51s, valid_score: 0.089400]
+Tue 25 Aug 2026 12:17:18 INFO  valid result: 
+hit@5 : 0.1064    hit@10 : 0.1479    hit@20 : 0.1972    ndcg@5 : 0.0761    ndcg@10 : 0.0894    ndcg@20 : 0.1019    mrr@5 : 0.0661    mrr@10 : 0.0716    mrr@20 : 0.075    precision@5 : 0.0213    precision@10 : 0.0148    precision@20 : 0.0099
+Tue 25 Aug 2026 12:17:18 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:18:13 INFO  epoch 15 training [time: 55.37s, train loss: 2611.5516]
+Tue 25 Aug 2026 12:18:14 INFO  epoch 15 evaluating [time: 0.51s, valid_score: 0.089600]
+Tue 25 Aug 2026 12:18:14 INFO  valid result: 
+hit@5 : 0.1074    hit@10 : 0.1495    hit@20 : 0.1987    ndcg@5 : 0.0761    ndcg@10 : 0.0896    ndcg@20 : 0.1021    mrr@5 : 0.0658    mrr@10 : 0.0714    mrr@20 : 0.0748    precision@5 : 0.0215    precision@10 : 0.0149    precision@20 : 0.0099
+Tue 25 Aug 2026 12:18:14 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:19:09 INFO  epoch 16 training [time: 55.06s, train loss: 2605.5492]
+Tue 25 Aug 2026 12:19:09 INFO  epoch 16 evaluating [time: 0.51s, valid_score: 0.090200]
+Tue 25 Aug 2026 12:19:09 INFO  valid result: 
+hit@5 : 0.109    hit@10 : 0.1503    hit@20 : 0.1989    ndcg@5 : 0.0768    ndcg@10 : 0.0902    ndcg@20 : 0.1025    mrr@5 : 0.0663    mrr@10 : 0.0718    mrr@20 : 0.0751    precision@5 : 0.0218    precision@10 : 0.015    precision@20 : 0.0099
+Tue 25 Aug 2026 12:19:09 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:20:05 INFO  epoch 17 training [time: 55.40s, train loss: 2600.3773]
+Tue 25 Aug 2026 12:20:05 INFO  epoch 17 evaluating [time: 0.52s, valid_score: 0.089900]
+Tue 25 Aug 2026 12:20:05 INFO  valid result: 
+hit@5 : 0.1088    hit@10 : 0.1493    hit@20 : 0.1984    ndcg@5 : 0.0769    ndcg@10 : 0.0899    ndcg@20 : 0.1023    mrr@5 : 0.0664    mrr@10 : 0.0718    mrr@20 : 0.0751    precision@5 : 0.0218    precision@10 : 0.0149    precision@20 : 0.0099
+Tue 25 Aug 2026 12:21:01 INFO  epoch 18 training [time: 55.14s, train loss: 2594.7304]
+Tue 25 Aug 2026 12:21:01 INFO  epoch 18 evaluating [time: 0.50s, valid_score: 0.090500]
+Tue 25 Aug 2026 12:21:01 INFO  valid result: 
+hit@5 : 0.1085    hit@10 : 0.1502    hit@20 : 0.1994    ndcg@5 : 0.0771    ndcg@10 : 0.0905    ndcg@20 : 0.1029    mrr@5 : 0.0667    mrr@10 : 0.0722    mrr@20 : 0.0756    precision@5 : 0.0217    precision@10 : 0.015    precision@20 : 0.01
+Tue 25 Aug 2026 12:21:01 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:21:57 INFO  epoch 19 training [time: 55.56s, train loss: 2590.0958]
+Tue 25 Aug 2026 12:21:57 INFO  epoch 19 evaluating [time: 0.50s, valid_score: 0.090000]
+Tue 25 Aug 2026 12:21:57 INFO  valid result: 
+hit@5 : 0.1082    hit@10 : 0.1501    hit@20 : 0.1992    ndcg@5 : 0.0765    ndcg@10 : 0.09    ndcg@20 : 0.1024    mrr@5 : 0.066    mrr@10 : 0.0716    mrr@20 : 0.075    precision@5 : 0.0216    precision@10 : 0.015    precision@20 : 0.01
+Tue 25 Aug 2026 12:22:52 INFO  epoch 20 training [time: 55.33s, train loss: 2585.3337]
+Tue 25 Aug 2026 12:22:53 INFO  epoch 20 evaluating [time: 0.61s, valid_score: 0.089700]
+Tue 25 Aug 2026 12:22:53 INFO  valid result: 
+hit@5 : 0.1079    hit@10 : 0.1501    hit@20 : 0.1996    ndcg@5 : 0.0762    ndcg@10 : 0.0897    ndcg@20 : 0.1022    mrr@5 : 0.0657    mrr@10 : 0.0713    mrr@20 : 0.0747    precision@5 : 0.0216    precision@10 : 0.015    precision@20 : 0.01
+Tue 25 Aug 2026 12:23:49 INFO  epoch 21 training [time: 55.46s, train loss: 2580.9420]
+Tue 25 Aug 2026 12:23:49 INFO  epoch 21 evaluating [time: 0.50s, valid_score: 0.090600]
+Tue 25 Aug 2026 12:23:49 INFO  valid result: 
+hit@5 : 0.1093    hit@10 : 0.1504    hit@20 : 0.2013    ndcg@5 : 0.0774    ndcg@10 : 0.0906    ndcg@20 : 0.1035    mrr@5 : 0.0669    mrr@10 : 0.0723    mrr@20 : 0.0758    precision@5 : 0.0219    precision@10 : 0.015    precision@20 : 0.0101
+Tue 25 Aug 2026 12:23:49 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:24:46 INFO  epoch 22 training [time: 56.65s, train loss: 2577.1953]
+Tue 25 Aug 2026 12:24:46 INFO  epoch 22 evaluating [time: 0.60s, valid_score: 0.091600]
+Tue 25 Aug 2026 12:24:46 INFO  valid result: 
+hit@5 : 0.112    hit@10 : 0.1511    hit@20 : 0.2018    ndcg@5 : 0.0791    ndcg@10 : 0.0916    ndcg@20 : 0.1044    mrr@5 : 0.0682    mrr@10 : 0.0733    mrr@20 : 0.0768    precision@5 : 0.0224    precision@10 : 0.0151    precision@20 : 0.0101
+Tue 25 Aug 2026 12:24:46 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:25:42 INFO  epoch 23 training [time: 55.85s, train loss: 2572.5743]
+Tue 25 Aug 2026 12:25:43 INFO  epoch 23 evaluating [time: 0.51s, valid_score: 0.090600]
+Tue 25 Aug 2026 12:25:43 INFO  valid result: 
+hit@5 : 0.1091    hit@10 : 0.1501    hit@20 : 0.2009    ndcg@5 : 0.0773    ndcg@10 : 0.0906    ndcg@20 : 0.1034    mrr@5 : 0.0668    mrr@10 : 0.0723    mrr@20 : 0.0758    precision@5 : 0.0218    precision@10 : 0.015    precision@20 : 0.01
+Tue 25 Aug 2026 12:26:36 INFO  epoch 24 training [time: 53.24s, train loss: 2569.4211]
+Tue 25 Aug 2026 12:26:37 INFO  epoch 24 evaluating [time: 0.50s, valid_score: 0.090500]
+Tue 25 Aug 2026 12:26:37 INFO  valid result: 
+hit@5 : 0.1091    hit@10 : 0.1518    hit@20 : 0.1993    ndcg@5 : 0.0768    ndcg@10 : 0.0905    ndcg@20 : 0.1025    mrr@5 : 0.0662    mrr@10 : 0.0718    mrr@20 : 0.0751    precision@5 : 0.0218    precision@10 : 0.0152    precision@20 : 0.01
+Tue 25 Aug 2026 12:27:30 INFO  epoch 25 training [time: 53.78s, train loss: 2565.7988]
+Tue 25 Aug 2026 12:27:31 INFO  epoch 25 evaluating [time: 0.52s, valid_score: 0.091200]
+Tue 25 Aug 2026 12:27:31 INFO  valid result: 
+hit@5 : 0.1102    hit@10 : 0.1511    hit@20 : 0.2014    ndcg@5 : 0.078    ndcg@10 : 0.0912    ndcg@20 : 0.1039    mrr@5 : 0.0674    mrr@10 : 0.0728    mrr@20 : 0.0763    precision@5 : 0.022    precision@10 : 0.0151    precision@20 : 0.0101
+Tue 25 Aug 2026 12:28:25 INFO  epoch 26 training [time: 54.68s, train loss: 2561.9231]
+Tue 25 Aug 2026 12:28:26 INFO  epoch 26 evaluating [time: 0.50s, valid_score: 0.091300]
+Tue 25 Aug 2026 12:28:26 INFO  valid result: 
+hit@5 : 0.1113    hit@10 : 0.1514    hit@20 : 0.1996    ndcg@5 : 0.0783    ndcg@10 : 0.0913    ndcg@20 : 0.1034    mrr@5 : 0.0675    mrr@10 : 0.0728    mrr@20 : 0.0761    precision@5 : 0.0223    precision@10 : 0.0151    precision@20 : 0.01
+Tue 25 Aug 2026 12:29:21 INFO  epoch 27 training [time: 55.09s, train loss: 2558.7136]
+Tue 25 Aug 2026 12:29:22 INFO  epoch 27 evaluating [time: 0.55s, valid_score: 0.090400]
+Tue 25 Aug 2026 12:29:22 INFO  valid result: 
+hit@5 : 0.1092    hit@10 : 0.15    hit@20 : 0.1996    ndcg@5 : 0.0772    ndcg@10 : 0.0904    ndcg@20 : 0.1029    mrr@5 : 0.0667    mrr@10 : 0.0721    mrr@20 : 0.0755    precision@5 : 0.0218    precision@10 : 0.015    precision@20 : 0.01
+Tue 25 Aug 2026 12:30:17 INFO  epoch 28 training [time: 55.19s, train loss: 2555.8463]
+Tue 25 Aug 2026 12:30:17 INFO  epoch 28 evaluating [time: 0.51s, valid_score: 0.091800]
+Tue 25 Aug 2026 12:30:17 INFO  valid result: 
+hit@5 : 0.1115    hit@10 : 0.1517    hit@20 : 0.2015    ndcg@5 : 0.0788    ndcg@10 : 0.0918    ndcg@20 : 0.1043    mrr@5 : 0.0681    mrr@10 : 0.0734    mrr@20 : 0.0768    precision@5 : 0.0223    precision@10 : 0.0152    precision@20 : 0.0101
+Tue 25 Aug 2026 12:30:17 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:31:13 INFO  epoch 29 training [time: 55.31s, train loss: 2552.8658]
+Tue 25 Aug 2026 12:31:13 INFO  epoch 29 evaluating [time: 0.53s, valid_score: 0.091600]
+Tue 25 Aug 2026 12:31:13 INFO  valid result: 
+hit@5 : 0.1112    hit@10 : 0.1514    hit@20 : 0.2001    ndcg@5 : 0.0786    ndcg@10 : 0.0916    ndcg@20 : 0.1039    mrr@5 : 0.0679    mrr@10 : 0.0733    mrr@20 : 0.0766    precision@5 : 0.0222    precision@10 : 0.0151    precision@20 : 0.01
+Tue 25 Aug 2026 12:32:09 INFO  epoch 30 training [time: 55.47s, train loss: 2550.0193]
+Tue 25 Aug 2026 12:32:09 INFO  epoch 30 evaluating [time: 0.60s, valid_score: 0.091300]
+Tue 25 Aug 2026 12:32:09 INFO  valid result: 
+hit@5 : 0.1097    hit@10 : 0.1503    hit@20 : 0.1993    ndcg@5 : 0.0782    ndcg@10 : 0.0913    ndcg@20 : 0.1036    mrr@5 : 0.0678    mrr@10 : 0.0732    mrr@20 : 0.0765    precision@5 : 0.0219    precision@10 : 0.015    precision@20 : 0.01
+Tue 25 Aug 2026 12:33:04 INFO  epoch 31 training [time: 54.86s, train loss: 2547.4417]
+Tue 25 Aug 2026 12:33:05 INFO  epoch 31 evaluating [time: 0.51s, valid_score: 0.092200]
+Tue 25 Aug 2026 12:33:05 INFO  valid result: 
+hit@5 : 0.1126    hit@10 : 0.1514    hit@20 : 0.2011    ndcg@5 : 0.0797    ndcg@10 : 0.0922    ndcg@20 : 0.1047    mrr@5 : 0.0688    mrr@10 : 0.074    mrr@20 : 0.0774    precision@5 : 0.0225    precision@10 : 0.0151    precision@20 : 0.0101
+Tue 25 Aug 2026 12:33:05 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:34:00 INFO  epoch 32 training [time: 55.36s, train loss: 2544.6910]
+Tue 25 Aug 2026 12:34:01 INFO  epoch 32 evaluating [time: 0.51s, valid_score: 0.092700]
+Tue 25 Aug 2026 12:34:01 INFO  valid result: 
+hit@5 : 0.1131    hit@10 : 0.1521    hit@20 : 0.2019    ndcg@5 : 0.0801    ndcg@10 : 0.0927    ndcg@20 : 0.1052    mrr@5 : 0.0693    mrr@10 : 0.0744    mrr@20 : 0.0778    precision@5 : 0.0226    precision@10 : 0.0152    precision@20 : 0.0101
+Tue 25 Aug 2026 12:34:01 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:34:56 INFO  epoch 33 training [time: 55.24s, train loss: 2542.2135]
+Tue 25 Aug 2026 12:34:56 INFO  epoch 33 evaluating [time: 0.51s, valid_score: 0.092200]
+Tue 25 Aug 2026 12:34:56 INFO  valid result: 
+hit@5 : 0.1114    hit@10 : 0.1521    hit@20 : 0.2013    ndcg@5 : 0.079    ndcg@10 : 0.0922    ndcg@20 : 0.1045    mrr@5 : 0.0683    mrr@10 : 0.0738    mrr@20 : 0.0771    precision@5 : 0.0223    precision@10 : 0.0152    precision@20 : 0.0101
+Tue 25 Aug 2026 12:35:52 INFO  epoch 34 training [time: 55.41s, train loss: 2539.8980]
+Tue 25 Aug 2026 12:35:52 INFO  epoch 34 evaluating [time: 0.50s, valid_score: 0.092800]
+Tue 25 Aug 2026 12:35:52 INFO  valid result: 
+hit@5 : 0.112    hit@10 : 0.1529    hit@20 : 0.2027    ndcg@5 : 0.0795    ndcg@10 : 0.0928    ndcg@20 : 0.1053    mrr@5 : 0.0688    mrr@10 : 0.0743    mrr@20 : 0.0777    precision@5 : 0.0224    precision@10 : 0.0153    precision@20 : 0.0101
+Tue 25 Aug 2026 12:35:52 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:36:48 INFO  epoch 35 training [time: 55.73s, train loss: 2537.4105]
+Tue 25 Aug 2026 12:36:49 INFO  epoch 35 evaluating [time: 0.51s, valid_score: 0.092000]
+Tue 25 Aug 2026 12:36:49 INFO  valid result: 
+hit@5 : 0.1114    hit@10 : 0.1524    hit@20 : 0.2022    ndcg@5 : 0.0788    ndcg@10 : 0.092    ndcg@20 : 0.1045    mrr@5 : 0.068    mrr@10 : 0.0735    mrr@20 : 0.0769    precision@5 : 0.0223    precision@10 : 0.0152    precision@20 : 0.0101
+Tue 25 Aug 2026 12:37:45 INFO  epoch 36 training [time: 56.65s, train loss: 2535.2493]
+Tue 25 Aug 2026 12:37:46 INFO  epoch 36 evaluating [time: 0.50s, valid_score: 0.091700]
+Tue 25 Aug 2026 12:37:46 INFO  valid result: 
+hit@5 : 0.1117    hit@10 : 0.1516    hit@20 : 0.201    ndcg@5 : 0.0789    ndcg@10 : 0.0917    ndcg@20 : 0.1042    mrr@5 : 0.0681    mrr@10 : 0.0734    mrr@20 : 0.0768    precision@5 : 0.0223    precision@10 : 0.0152    precision@20 : 0.01
+Tue 25 Aug 2026 12:38:39 INFO  epoch 37 training [time: 53.36s, train loss: 2533.1383]
+Tue 25 Aug 2026 12:38:42 INFO  epoch 37 evaluating [time: 3.20s, valid_score: 0.092700]
+Tue 25 Aug 2026 12:38:42 INFO  valid result: 
+hit@5 : 0.1113    hit@10 : 0.1532    hit@20 : 0.203    ndcg@5 : 0.0792    ndcg@10 : 0.0927    ndcg@20 : 0.1052    mrr@5 : 0.0686    mrr@10 : 0.0741    mrr@20 : 0.0775    precision@5 : 0.0223    precision@10 : 0.0153    precision@20 : 0.0101
+Tue 25 Aug 2026 12:39:36 INFO  epoch 38 training [time: 53.53s, train loss: 2531.1179]
+Tue 25 Aug 2026 12:39:36 INFO  epoch 38 evaluating [time: 0.52s, valid_score: 0.092100]
+Tue 25 Aug 2026 12:39:36 INFO  valid result: 
+hit@5 : 0.1116    hit@10 : 0.1524    hit@20 : 0.2029    ndcg@5 : 0.0789    ndcg@10 : 0.0921    ndcg@20 : 0.1048    mrr@5 : 0.0681    mrr@10 : 0.0735    mrr@20 : 0.077    precision@5 : 0.0223    precision@10 : 0.0152    precision@20 : 0.0101
+Tue 25 Aug 2026 12:40:30 INFO  epoch 39 training [time: 53.20s, train loss: 2529.5707]
+Tue 25 Aug 2026 12:40:30 INFO  epoch 39 evaluating [time: 0.60s, valid_score: 0.092100]
+Tue 25 Aug 2026 12:40:30 INFO  valid result: 
+hit@5 : 0.1114    hit@10 : 0.1535    hit@20 : 0.2013    ndcg@5 : 0.0785    ndcg@10 : 0.0921    ndcg@20 : 0.1041    mrr@5 : 0.0677    mrr@10 : 0.0733    mrr@20 : 0.0765    precision@5 : 0.0223    precision@10 : 0.0154    precision@20 : 0.0101
+Tue 25 Aug 2026 12:41:25 INFO  epoch 40 training [time: 54.81s, train loss: 2527.3411]
+Tue 25 Aug 2026 12:41:26 INFO  epoch 40 evaluating [time: 0.60s, valid_score: 0.092600]
+Tue 25 Aug 2026 12:41:26 INFO  valid result: 
+hit@5 : 0.1127    hit@10 : 0.1521    hit@20 : 0.2019    ndcg@5 : 0.0799    ndcg@10 : 0.0926    ndcg@20 : 0.1052    mrr@5 : 0.0691    mrr@10 : 0.0744    mrr@20 : 0.0778    precision@5 : 0.0225    precision@10 : 0.0152    precision@20 : 0.0101
+Tue 25 Aug 2026 12:42:21 INFO  epoch 41 training [time: 55.19s, train loss: 2525.3810]
+Tue 25 Aug 2026 12:42:21 INFO  epoch 41 evaluating [time: 0.53s, valid_score: 0.093200]
+Tue 25 Aug 2026 12:42:21 INFO  valid result: 
+hit@5 : 0.1135    hit@10 : 0.1529    hit@20 : 0.2029    ndcg@5 : 0.0805    ndcg@10 : 0.0932    ndcg@20 : 0.1058    mrr@5 : 0.0696    mrr@10 : 0.0749    mrr@20 : 0.0783    precision@5 : 0.0227    precision@10 : 0.0153    precision@20 : 0.0101
+Tue 25 Aug 2026 12:42:21 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:43:17 INFO  epoch 42 training [time: 55.29s, train loss: 2524.1805]
+Tue 25 Aug 2026 12:43:17 INFO  epoch 42 evaluating [time: 0.53s, valid_score: 0.092400]
+Tue 25 Aug 2026 12:43:17 INFO  valid result: 
+hit@5 : 0.1132    hit@10 : 0.1513    hit@20 : 0.2015    ndcg@5 : 0.0801    ndcg@10 : 0.0924    ndcg@20 : 0.105    mrr@5 : 0.0692    mrr@10 : 0.0742    mrr@20 : 0.0777    precision@5 : 0.0226    precision@10 : 0.0151    precision@20 : 0.0101
+Tue 25 Aug 2026 12:44:12 INFO  epoch 43 training [time: 55.15s, train loss: 2522.3504]
+Tue 25 Aug 2026 12:44:13 INFO  epoch 43 evaluating [time: 0.60s, valid_score: 0.094000]
+Tue 25 Aug 2026 12:44:13 INFO  valid result: 
+hit@5 : 0.1135    hit@10 : 0.1539    hit@20 : 0.2022    ndcg@5 : 0.081    ndcg@10 : 0.094    ndcg@20 : 0.1062    mrr@5 : 0.0703    mrr@10 : 0.0757    mrr@20 : 0.079    precision@5 : 0.0227    precision@10 : 0.0154    precision@20 : 0.0101
+Tue 25 Aug 2026 12:44:13 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:45:08 INFO  epoch 44 training [time: 54.95s, train loss: 2520.5540]
+Tue 25 Aug 2026 12:45:09 INFO  epoch 44 evaluating [time: 0.52s, valid_score: 0.093700]
+Tue 25 Aug 2026 12:45:09 INFO  valid result: 
+hit@5 : 0.1136    hit@10 : 0.1531    hit@20 : 0.2032    ndcg@5 : 0.0809    ndcg@10 : 0.0937    ndcg@20 : 0.1063    mrr@5 : 0.0702    mrr@10 : 0.0754    mrr@20 : 0.0788    precision@5 : 0.0227    precision@10 : 0.0153    precision@20 : 0.0102
+Tue 25 Aug 2026 12:46:04 INFO  epoch 45 training [time: 55.46s, train loss: 2518.6488]
+Tue 25 Aug 2026 12:46:04 INFO  epoch 45 evaluating [time: 0.52s, valid_score: 0.093400]
+Tue 25 Aug 2026 12:46:04 INFO  valid result: 
+hit@5 : 0.1125    hit@10 : 0.1547    hit@20 : 0.2038    ndcg@5 : 0.0798    ndcg@10 : 0.0934    ndcg@20 : 0.1058    mrr@5 : 0.069    mrr@10 : 0.0746    mrr@20 : 0.078    precision@5 : 0.0225    precision@10 : 0.0155    precision@20 : 0.0102
+Tue 25 Aug 2026 12:47:00 INFO  epoch 46 training [time: 55.27s, train loss: 2517.3159]
+Tue 25 Aug 2026 12:47:00 INFO  epoch 46 evaluating [time: 0.51s, valid_score: 0.094200]
+Tue 25 Aug 2026 12:47:00 INFO  valid result: 
+hit@5 : 0.1136    hit@10 : 0.1545    hit@20 : 0.2031    ndcg@5 : 0.081    ndcg@10 : 0.0942    ndcg@20 : 0.1064    mrr@5 : 0.0702    mrr@10 : 0.0757    mrr@20 : 0.079    precision@5 : 0.0227    precision@10 : 0.0155    precision@20 : 0.0102
+Tue 25 Aug 2026 12:47:00 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:47:56 INFO  epoch 47 training [time: 55.53s, train loss: 2516.2334]
+Tue 25 Aug 2026 12:47:56 INFO  epoch 47 evaluating [time: 0.60s, valid_score: 0.094400]
+Tue 25 Aug 2026 12:47:56 INFO  valid result: 
+hit@5 : 0.1144    hit@10 : 0.1547    hit@20 : 0.2026    ndcg@5 : 0.0815    ndcg@10 : 0.0944    ndcg@20 : 0.1065    mrr@5 : 0.0707    mrr@10 : 0.076    mrr@20 : 0.0793    precision@5 : 0.0229    precision@10 : 0.0155    precision@20 : 0.0101
+Tue 25 Aug 2026 12:47:57 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:48:51 INFO  epoch 48 training [time: 54.82s, train loss: 2514.4422]
+Tue 25 Aug 2026 12:48:52 INFO  epoch 48 evaluating [time: 0.60s, valid_score: 0.093300]
+Tue 25 Aug 2026 12:48:52 INFO  valid result: 
+hit@5 : 0.1134    hit@10 : 0.1539    hit@20 : 0.2039    ndcg@5 : 0.0803    ndcg@10 : 0.0933    ndcg@20 : 0.1059    mrr@5 : 0.0694    mrr@10 : 0.0747    mrr@20 : 0.0782    precision@5 : 0.0227    precision@10 : 0.0154    precision@20 : 0.0102
+Tue 25 Aug 2026 12:49:48 INFO  epoch 49 training [time: 55.82s, train loss: 2513.5691]
+Tue 25 Aug 2026 12:49:48 INFO  epoch 49 evaluating [time: 0.55s, valid_score: 0.093400]
+Tue 25 Aug 2026 12:49:48 INFO  valid result: 
+hit@5 : 0.1121    hit@10 : 0.1542    hit@20 : 0.203    ndcg@5 : 0.0798    ndcg@10 : 0.0934    ndcg@20 : 0.1056    mrr@5 : 0.0691    mrr@10 : 0.0747    mrr@20 : 0.0781    precision@5 : 0.0224    precision@10 : 0.0154    precision@20 : 0.0101
+Tue 25 Aug 2026 12:50:45 INFO  epoch 50 training [time: 56.69s, train loss: 2511.7005]
+Tue 25 Aug 2026 12:50:46 INFO  epoch 50 evaluating [time: 0.60s, valid_score: 0.094100]
+Tue 25 Aug 2026 12:50:46 INFO  valid result: 
+hit@5 : 0.114    hit@10 : 0.155    hit@20 : 0.2039    ndcg@5 : 0.0808    ndcg@10 : 0.0941    ndcg@20 : 0.1064    mrr@5 : 0.0699    mrr@10 : 0.0754    mrr@20 : 0.0787    precision@5 : 0.0228    precision@10 : 0.0155    precision@20 : 0.0102
+Tue 25 Aug 2026 12:51:39 INFO  epoch 51 training [time: 53.83s, train loss: 2510.0926]
+Tue 25 Aug 2026 12:51:40 INFO  epoch 51 evaluating [time: 0.62s, valid_score: 0.093600]
+Tue 25 Aug 2026 12:51:40 INFO  valid result: 
+hit@5 : 0.1135    hit@10 : 0.1548    hit@20 : 0.2035    ndcg@5 : 0.0803    ndcg@10 : 0.0936    ndcg@20 : 0.1058    mrr@5 : 0.0694    mrr@10 : 0.0748    mrr@20 : 0.0781    precision@5 : 0.0227    precision@10 : 0.0155    precision@20 : 0.0102
+Tue 25 Aug 2026 12:52:36 INFO  epoch 52 training [time: 54.18s, train loss: 2509.3355]
+Tue 25 Aug 2026 12:52:37 INFO  epoch 52 evaluating [time: 0.51s, valid_score: 0.094400]
+Tue 25 Aug 2026 12:52:37 INFO  valid result: 
+hit@5 : 0.1147    hit@10 : 0.1548    hit@20 : 0.2029    ndcg@5 : 0.0815    ndcg@10 : 0.0944    ndcg@20 : 0.1066    mrr@5 : 0.0706    mrr@10 : 0.0759    mrr@20 : 0.0793    precision@5 : 0.0229    precision@10 : 0.0155    precision@20 : 0.0101
+Tue 25 Aug 2026 12:52:37 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:53:31 INFO  epoch 53 training [time: 54.12s, train loss: 2507.4307]
+Tue 25 Aug 2026 12:53:31 INFO  epoch 53 evaluating [time: 0.51s, valid_score: 0.093500]
+Tue 25 Aug 2026 12:53:31 INFO  valid result: 
+hit@5 : 0.114    hit@10 : 0.1537    hit@20 : 0.2022    ndcg@5 : 0.0808    ndcg@10 : 0.0935    ndcg@20 : 0.1058    mrr@5 : 0.0699    mrr@10 : 0.0751    mrr@20 : 0.0784    precision@5 : 0.0228    precision@10 : 0.0154    precision@20 : 0.0101
+Tue 25 Aug 2026 12:54:26 INFO  epoch 54 training [time: 54.29s, train loss: 2506.4100]
+Tue 25 Aug 2026 12:54:26 INFO  epoch 54 evaluating [time: 0.60s, valid_score: 0.094000]
+Tue 25 Aug 2026 12:54:26 INFO  valid result: 
+hit@5 : 0.113    hit@10 : 0.1545    hit@20 : 0.2031    ndcg@5 : 0.0806    ndcg@10 : 0.094    ndcg@20 : 0.1062    mrr@5 : 0.0699    mrr@10 : 0.0755    mrr@20 : 0.0788    precision@5 : 0.0226    precision@10 : 0.0154    precision@20 : 0.0102
+Tue 25 Aug 2026 12:55:20 INFO  epoch 55 training [time: 54.27s, train loss: 2505.4076]
+Tue 25 Aug 2026 12:55:21 INFO  epoch 55 evaluating [time: 0.67s, valid_score: 0.093300]
+Tue 25 Aug 2026 12:55:21 INFO  valid result: 
+hit@5 : 0.1135    hit@10 : 0.1526    hit@20 : 0.2027    ndcg@5 : 0.0807    ndcg@10 : 0.0933    ndcg@20 : 0.106    mrr@5 : 0.0699    mrr@10 : 0.0751    mrr@20 : 0.0786    precision@5 : 0.0227    precision@10 : 0.0153    precision@20 : 0.0101
+Tue 25 Aug 2026 12:56:17 INFO  epoch 56 training [time: 55.42s, train loss: 2503.9721]
+Tue 25 Aug 2026 12:56:17 INFO  epoch 56 evaluating [time: 0.52s, valid_score: 0.094500]
+Tue 25 Aug 2026 12:56:17 INFO  valid result: 
+hit@5 : 0.1143    hit@10 : 0.1547    hit@20 : 0.2023    ndcg@5 : 0.0815    ndcg@10 : 0.0945    ndcg@20 : 0.1065    mrr@5 : 0.0707    mrr@10 : 0.0761    mrr@20 : 0.0794    precision@5 : 0.0229    precision@10 : 0.0155    precision@20 : 0.0101
+Tue 25 Aug 2026 12:56:17 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 12:57:12 INFO  epoch 57 training [time: 54.95s, train loss: 2503.0729]
+Tue 25 Aug 2026 12:57:13 INFO  epoch 57 evaluating [time: 0.67s, valid_score: 0.094000]
+Tue 25 Aug 2026 12:57:13 INFO  valid result: 
+hit@5 : 0.1146    hit@10 : 0.1543    hit@20 : 0.2021    ndcg@5 : 0.0812    ndcg@10 : 0.094    ndcg@20 : 0.106    mrr@5 : 0.0702    mrr@10 : 0.0755    mrr@20 : 0.0787    precision@5 : 0.0229    precision@10 : 0.0154    precision@20 : 0.0101
+Tue 25 Aug 2026 12:58:08 INFO  epoch 58 training [time: 55.45s, train loss: 2502.1372]
+Tue 25 Aug 2026 12:58:09 INFO  epoch 58 evaluating [time: 0.60s, valid_score: 0.093800]
+Tue 25 Aug 2026 12:58:09 INFO  valid result: 
+hit@5 : 0.1138    hit@10 : 0.155    hit@20 : 0.2033    ndcg@5 : 0.0805    ndcg@10 : 0.0938    ndcg@20 : 0.1059    mrr@5 : 0.0696    mrr@10 : 0.075    mrr@20 : 0.0783    precision@5 : 0.0228    precision@10 : 0.0155    precision@20 : 0.0102
+Tue 25 Aug 2026 12:59:04 INFO  epoch 59 training [time: 54.95s, train loss: 2501.2002]
+Tue 25 Aug 2026 12:59:04 INFO  epoch 59 evaluating [time: 0.52s, valid_score: 0.094100]
+Tue 25 Aug 2026 12:59:04 INFO  valid result: 
+hit@5 : 0.1122    hit@10 : 0.1548    hit@20 : 0.2025    ndcg@5 : 0.0803    ndcg@10 : 0.0941    ndcg@20 : 0.1061    mrr@5 : 0.0698    mrr@10 : 0.0755    mrr@20 : 0.0787    precision@5 : 0.0224    precision@10 : 0.0155    precision@20 : 0.0101
+Tue 25 Aug 2026 12:59:59 INFO  epoch 60 training [time: 55.15s, train loss: 2500.3875]
+Tue 25 Aug 2026 13:00:00 INFO  epoch 60 evaluating [time: 0.61s, valid_score: 0.093500]
+Tue 25 Aug 2026 13:00:00 INFO  valid result: 
+hit@5 : 0.1135    hit@10 : 0.154    hit@20 : 0.2029    ndcg@5 : 0.0804    ndcg@10 : 0.0935    ndcg@20 : 0.1058    mrr@5 : 0.0695    mrr@10 : 0.0749    mrr@20 : 0.0783    precision@5 : 0.0227    precision@10 : 0.0154    precision@20 : 0.0101
+Tue 25 Aug 2026 13:00:55 INFO  epoch 61 training [time: 55.19s, train loss: 2499.3791]
+Tue 25 Aug 2026 13:00:56 INFO  epoch 61 evaluating [time: 0.67s, valid_score: 0.094200]
+Tue 25 Aug 2026 13:00:56 INFO  valid result: 
+hit@5 : 0.113    hit@10 : 0.1549    hit@20 : 0.2031    ndcg@5 : 0.0806    ndcg@10 : 0.0942    ndcg@20 : 0.1063    mrr@5 : 0.07    mrr@10 : 0.0755    mrr@20 : 0.0789    precision@5 : 0.0226    precision@10 : 0.0155    precision@20 : 0.0102
+Tue 25 Aug 2026 13:01:51 INFO  epoch 62 training [time: 54.92s, train loss: 2498.4650]
+Tue 25 Aug 2026 13:01:51 INFO  epoch 62 evaluating [time: 0.52s, valid_score: 0.094400]
+Tue 25 Aug 2026 13:01:51 INFO  valid result: 
+hit@5 : 0.1148    hit@10 : 0.1555    hit@20 : 0.2038    ndcg@5 : 0.0812    ndcg@10 : 0.0944    ndcg@20 : 0.1066    mrr@5 : 0.0702    mrr@10 : 0.0756    mrr@20 : 0.0789    precision@5 : 0.023    precision@10 : 0.0156    precision@20 : 0.0102
+Tue 25 Aug 2026 13:02:48 INFO  epoch 63 training [time: 56.35s, train loss: 2497.4262]
+Tue 25 Aug 2026 13:02:48 INFO  epoch 63 evaluating [time: 0.68s, valid_score: 0.095000]
+Tue 25 Aug 2026 13:02:48 INFO  valid result: 
+hit@5 : 0.1148    hit@10 : 0.1568    hit@20 : 0.2047    ndcg@5 : 0.0814    ndcg@10 : 0.095    ndcg@20 : 0.1071    mrr@5 : 0.0704    mrr@10 : 0.076    mrr@20 : 0.0793    precision@5 : 0.023    precision@10 : 0.0157    precision@20 : 0.0102
+Tue 25 Aug 2026 13:02:48 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 13:03:45 INFO  epoch 64 training [time: 56.19s, train loss: 2496.1587]
+Tue 25 Aug 2026 13:03:45 INFO  epoch 64 evaluating [time: 0.67s, valid_score: 0.093700]
+Tue 25 Aug 2026 13:03:45 INFO  valid result: 
+hit@5 : 0.1129    hit@10 : 0.1545    hit@20 : 0.2021    ndcg@5 : 0.0803    ndcg@10 : 0.0937    ndcg@20 : 0.1058    mrr@5 : 0.0696    mrr@10 : 0.0752    mrr@20 : 0.0784    precision@5 : 0.0226    precision@10 : 0.0155    precision@20 : 0.0101
+Tue 25 Aug 2026 13:04:39 INFO  epoch 65 training [time: 54.19s, train loss: 2496.0305]
+Tue 25 Aug 2026 13:04:40 INFO  epoch 65 evaluating [time: 0.60s, valid_score: 0.095100]
+Tue 25 Aug 2026 13:04:40 INFO  valid result: 
+hit@5 : 0.1159    hit@10 : 0.1558    hit@20 : 0.2034    ndcg@5 : 0.0822    ndcg@10 : 0.0951    ndcg@20 : 0.1071    mrr@5 : 0.0712    mrr@10 : 0.0764    mrr@20 : 0.0797    precision@5 : 0.0232    precision@10 : 0.0156    precision@20 : 0.0102
+Tue 25 Aug 2026 13:04:40 INFO  Saving current: saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 13:05:35 INFO  epoch 66 training [time: 55.26s, train loss: 2494.5700]
+Tue 25 Aug 2026 13:05:36 INFO  epoch 66 evaluating [time: 0.60s, valid_score: 0.094900]
+Tue 25 Aug 2026 13:05:36 INFO  valid result: 
+hit@5 : 0.1138    hit@10 : 0.1563    hit@20 : 0.2032    ndcg@5 : 0.0811    ndcg@10 : 0.0949    ndcg@20 : 0.1067    mrr@5 : 0.0704    mrr@10 : 0.0761    mrr@20 : 0.0793    precision@5 : 0.0228    precision@10 : 0.0156    precision@20 : 0.0102
+Tue 25 Aug 2026 13:06:30 INFO  epoch 67 training [time: 54.26s, train loss: 2493.6577]
+Tue 25 Aug 2026 13:06:31 INFO  epoch 67 evaluating [time: 0.61s, valid_score: 0.094400]
+Tue 25 Aug 2026 13:06:31 INFO  valid result: 
+hit@5 : 0.1139    hit@10 : 0.1543    hit@20 : 0.2026    ndcg@5 : 0.0814    ndcg@10 : 0.0944    ndcg@20 : 0.1066    mrr@5 : 0.0707    mrr@10 : 0.076    mrr@20 : 0.0794    precision@5 : 0.0228    precision@10 : 0.0154    precision@20 : 0.0101
+Tue 25 Aug 2026 13:07:25 INFO  epoch 68 training [time: 54.23s, train loss: 2493.4043]
+Tue 25 Aug 2026 13:07:26 INFO  epoch 68 evaluating [time: 0.60s, valid_score: 0.093900]
+Tue 25 Aug 2026 13:07:26 INFO  valid result: 
+hit@5 : 0.1128    hit@10 : 0.1549    hit@20 : 0.2027    ndcg@5 : 0.0802    ndcg@10 : 0.0939    ndcg@20 : 0.106    mrr@5 : 0.0695    mrr@10 : 0.0752    mrr@20 : 0.0785    precision@5 : 0.0226    precision@10 : 0.0155    precision@20 : 0.0101
+Tue 25 Aug 2026 13:08:20 INFO  epoch 69 training [time: 54.21s, train loss: 2491.9395]
+Tue 25 Aug 2026 13:08:21 INFO  epoch 69 evaluating [time: 0.61s, valid_score: 0.094200]
+Tue 25 Aug 2026 13:08:21 INFO  valid result: 
+hit@5 : 0.1137    hit@10 : 0.1549    hit@20 : 0.2021    ndcg@5 : 0.0809    ndcg@10 : 0.0942    ndcg@20 : 0.1061    mrr@5 : 0.0701    mrr@10 : 0.0755    mrr@20 : 0.0788    precision@5 : 0.0227    precision@10 : 0.0155    precision@20 : 0.0101
+Tue 25 Aug 2026 13:09:16 INFO  epoch 70 training [time: 55.19s, train loss: 2491.6549]
+Tue 25 Aug 2026 13:09:16 INFO  epoch 70 evaluating [time: 0.60s, valid_score: 0.093800]
+Tue 25 Aug 2026 13:09:16 INFO  valid result: 
+hit@5 : 0.1143    hit@10 : 0.1541    hit@20 : 0.2018    ndcg@5 : 0.081    ndcg@10 : 0.0938    ndcg@20 : 0.1058    mrr@5 : 0.07    mrr@10 : 0.0752    mrr@20 : 0.0786    precision@5 : 0.0229    precision@10 : 0.0154    precision@20 : 0.0101
+Tue 25 Aug 2026 13:10:11 INFO  epoch 71 training [time: 54.97s, train loss: 2491.1895]
+Tue 25 Aug 2026 13:10:12 INFO  epoch 71 evaluating [time: 0.59s, valid_score: 0.094300]
+Tue 25 Aug 2026 13:10:12 INFO  valid result: 
+hit@5 : 0.1149    hit@10 : 0.155    hit@20 : 0.2031    ndcg@5 : 0.0814    ndcg@10 : 0.0943    ndcg@20 : 0.1064    mrr@5 : 0.0704    mrr@10 : 0.0757    mrr@20 : 0.079    precision@5 : 0.023    precision@10 : 0.0155    precision@20 : 0.0102
+Tue 25 Aug 2026 13:11:07 INFO  epoch 72 training [time: 55.20s, train loss: 2489.7619]
+Tue 25 Aug 2026 13:11:08 INFO  epoch 72 evaluating [time: 0.52s, valid_score: 0.094800]
+Tue 25 Aug 2026 13:11:08 INFO  valid result: 
+hit@5 : 0.115    hit@10 : 0.1545    hit@20 : 0.2037    ndcg@5 : 0.0821    ndcg@10 : 0.0948    ndcg@20 : 0.1072    mrr@5 : 0.0712    mrr@10 : 0.0765    mrr@20 : 0.0799    precision@5 : 0.023    precision@10 : 0.0155    precision@20 : 0.0102
+Tue 25 Aug 2026 13:12:03 INFO  epoch 73 training [time: 55.38s, train loss: 2489.4035]
+Tue 25 Aug 2026 13:12:04 INFO  epoch 73 evaluating [time: 0.61s, valid_score: 0.094500]
+Tue 25 Aug 2026 13:12:04 INFO  valid result: 
+hit@5 : 0.1142    hit@10 : 0.1559    hit@20 : 0.2039    ndcg@5 : 0.0812    ndcg@10 : 0.0945    ndcg@20 : 0.1066    mrr@5 : 0.0703    mrr@10 : 0.0758    mrr@20 : 0.0791    precision@5 : 0.0228    precision@10 : 0.0156    precision@20 : 0.0102
+Tue 25 Aug 2026 13:13:19 INFO  epoch 74 training [time: 75.03s, train loss: 2488.5506]
+Tue 25 Aug 2026 13:13:19 INFO  epoch 74 evaluating [time: 0.64s, valid_score: 0.094200]
+Tue 25 Aug 2026 13:13:19 INFO  valid result: 
+hit@5 : 0.1151    hit@10 : 0.154    hit@20 : 0.2021    ndcg@5 : 0.0817    ndcg@10 : 0.0942    ndcg@20 : 0.1064    mrr@5 : 0.0707    mrr@10 : 0.0758    mrr@20 : 0.0792    precision@5 : 0.023    precision@10 : 0.0154    precision@20 : 0.0101
+Tue 25 Aug 2026 13:14:13 INFO  epoch 75 training [time: 53.99s, train loss: 2487.9854]
+Tue 25 Aug 2026 13:14:14 INFO  epoch 75 evaluating [time: 0.61s, valid_score: 0.094300]
+Tue 25 Aug 2026 13:14:14 INFO  valid result: 
+hit@5 : 0.1144    hit@10 : 0.155    hit@20 : 0.2047    ndcg@5 : 0.0812    ndcg@10 : 0.0943    ndcg@20 : 0.1068    mrr@5 : 0.0702    mrr@10 : 0.0756    mrr@20 : 0.079    precision@5 : 0.0229    precision@10 : 0.0155    precision@20 : 0.0102
+Tue 25 Aug 2026 13:15:08 INFO  epoch 76 training [time: 54.18s, train loss: 2487.1607]
+Tue 25 Aug 2026 13:15:09 INFO  epoch 76 evaluating [time: 0.59s, valid_score: 0.094300]
+Tue 25 Aug 2026 13:15:09 INFO  valid result: 
+hit@5 : 0.1142    hit@10 : 0.1552    hit@20 : 0.2034    ndcg@5 : 0.0811    ndcg@10 : 0.0943    ndcg@20 : 0.1064    mrr@5 : 0.0702    mrr@10 : 0.0756    mrr@20 : 0.0789    precision@5 : 0.0228    precision@10 : 0.0155    precision@20 : 0.0102
+Tue 25 Aug 2026 13:15:09 INFO  Finished training, best eval result in epoch 65
+Tue 25 Aug 2026 13:15:09 INFO  Loading model structure and parameters from saved/SCFF-Aug-25-2026_12-03-40.pth
+Tue 25 Aug 2026 13:15:10 INFO  The running environment of this training is as follows:
++-------------+-----------------+
+| Environment |      Usage      |
++=============+=================+
+| CPU         |     20.10 %     |
++-------------+-----------------+
+| GPU         | 5.64 G/23.69 G  |
++-------------+-----------------+
+| Memory      | 3.10 G/251.55 G |
++-------------+-----------------+
+Tue 25 Aug 2026 13:15:10 INFO  best valid : OrderedDict([('hit@5', 0.1159), ('hit@10', 0.1558), ('hit@20', 0.2034), ('ndcg@5', 0.0822), ('ndcg@10', 0.0951), ('ndcg@20', 0.1071), ('mrr@5', 0.0712), ('mrr@10', 0.0764), ('mrr@20', 0.0797), ('precision@5', 0.0232), ('precision@10', 0.0156), ('precision@20', 0.0102)])
+Tue 25 Aug 2026 13:15:10 INFO  test result: OrderedDict([('hit@5', 0.1295), ('hit@10', 0.1693), ('hit@20', 0.2177), ('ndcg@5', 0.0945), ('ndcg@10', 0.1074), ('ndcg@20', 0.1196), ('mrr@5', 0.083), ('mrr@10', 0.0883), ('mrr@20', 0.0917), ('precision@5', 0.0259), ('precision@10', 0.0169), ('precision@20', 0.0109)])
